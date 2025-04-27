@@ -35,16 +35,15 @@ export default function News() {
 
   // Carrusel automático
   useEffect(() => {
+    const nextSlide = (dir: number) => {
+      setDirection(dir);
+      setIndex((prev) => (prev + dir + total) % total);
+    };
     const timer = setTimeout(() => {
       nextSlide(1);
     }, 5000);
     return () => clearTimeout(timer);
-  }, [index]);
-
-  function nextSlide(dir: number) {
-    setDirection(dir);
-    setIndex((prev) => (prev + dir + total) % total);
-  }
+  }, [index, total]);
 
   return (
     <div className="w-full max-w-2xl mx-auto mt-12">
@@ -88,7 +87,10 @@ export default function News() {
         </AnimatePresence>
         {/* Flechas */}
         <button
-          onClick={() => nextSlide(-1)}
+          onClick={() => {
+            setDirection(-1);
+            setIndex((prev) => (prev - 1 + total) % total);
+          }}
           className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-yellow-500/80 text-yellow-300 hover:text-black rounded-full p-2 shadow-lg transition"
           aria-label="Anterior"
         >
@@ -104,7 +106,10 @@ export default function News() {
           </svg>
         </button>
         <button
-          onClick={() => nextSlide(1)}
+          onClick={() => {
+            setDirection(1);
+            setIndex((prev) => (prev + 1 + total) % total);
+          }}
           className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-yellow-500/80 text-yellow-300 hover:text-black rounded-full p-2 shadow-lg transition"
           aria-label="Siguiente"
         >

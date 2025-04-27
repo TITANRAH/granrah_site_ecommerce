@@ -1,18 +1,19 @@
 "use client";
 
-import { AnimatedSection } from "@/components/sections/AnimatedSection";
-import { DraggableCards } from "@/components/sections/DraggableCards";
-import { MediaPlayer } from "@/components/sections/MediaPlayer";
+import { AnimatedSection } from "@/components/sections/wrapper/AnimatedSection";
+import { DraggableCards } from "@/components/sections/landing/DraggableCards";
+import { MediaPlayer } from "@/components/sections/landing/MediaPlayer";
 import { ModernAccordion, AccordionItem } from "@/components/ui/Accordion";
-import Hero from "@/components/shared/Hero";
+import Hero from "@/components/shared/landing/Hero";
 
-import TextDivider from "@/components/shared/TextDivider";
-import { User2, Music, Headphones, Mail } from "lucide-react";
+import TextDivider from "@/components/shared/landing/TextDivider";
+import { User2, Music, Headphones, Mail, Newspaper } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { aboutItems } from "@/constants/about-me/about-me-item.constant";
-import { images } from "@/constants/about-me/images-to-about-me";
-import { ContactForm } from "@/components/sections/ContactForm";
+import { aboutItems } from "@/constants/landing/about-me/about-me-item.constant";
+import { images } from "@/constants/landing/about-me/images-to-about-me";
+import { ContactForm } from "@/components/sections/landing/ContactForm";
+import News from "@/components/sections/landing/News";
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(images.default);
@@ -60,10 +61,9 @@ export default function Home() {
         direction="right"
         icon={<User2 className="text-black" size={60} strokeWidth={2} />}
       />
-      <section className="max-w-[1200px] p-20 flex justify-center items-center m-auto">
+      <section className="max-w-[1200px] my-32 flex justify-center items-center m-auto">
         <AnimatedSection direction="right">
-          <div className="my-24 ">
-            <div className="flex flex-row gap-12">
+            <div className="flex flex-row ">
               <div className="flex justify-center ">
                 <div className="relative w-[500px] h-[500px] overflow-hidden rounded-2xl">
                   <Image
@@ -81,6 +81,18 @@ export default function Home() {
                 />
               </div>
             </div>
+        </AnimatedSection>
+      </section>
+      <div id="news" className="bg-[#0A0A0A] w-full h-20"></div>
+      <TextDivider
+        text="NEWS"
+        direction="left"
+        icon={<Newspaper className="text-black" size={60} strokeWidth={2} />}
+      />
+      <section className="max-w-[1200px] p-20 flex justify-center items-center m-auto">
+        <AnimatedSection direction="right">
+          <div className="my-24 ">
+            <News />
           </div>
         </AnimatedSection>
       </section>

@@ -54,7 +54,7 @@ export const AnimatedSection = ({
   return (
     <motion.div
       ref={ref}
-      className={`min-h-[78vh] w-full ${className}`}
+      className={`w-full ${className}`}
       style={{ opacity, x }}
     >
       <div className="mx-auto">

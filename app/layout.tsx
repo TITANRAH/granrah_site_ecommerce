@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import {  Bebas_Neue } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/shared/Navbar";
-import Footer from "@/components/shared/Footer";
+import Navbar from "@/components/shared/common/Navbar";
+import Footer from "@/components/shared/common/Footer";
 
 // const teko = Teko({
 //   subsets: ["latin"],

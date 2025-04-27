@@ -11,11 +11,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
+} from "../../ui/form";
+import { Input } from "../../ui/input";
 import { toast } from "sonner";
-import { Button } from "../ui/button";
-import { Textarea } from "../ui/textarea";
+import { Button } from "../../ui/button";
+import { Textarea } from "../../ui/textarea";
 import { conctacFormSchema } from "@/schemas/contac-form.schema";
 
 export function ContactForm() {

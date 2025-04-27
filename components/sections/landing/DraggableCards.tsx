@@ -3,8 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import DraggableCardItem from "../sections-components/dragable-card/DraggableCardItem";
-import { cards } from "@/constants/draggable-card/draggable-card-items";
+import DraggableCardItem from "../../sections-components/landing/dragable-card/DraggableCardItem";
+import { cards } from "@/constants/landing/draggable-card/draggable-card-items";
 
 export const DraggableCards = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

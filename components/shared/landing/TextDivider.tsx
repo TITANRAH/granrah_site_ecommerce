@@ -18,7 +18,6 @@ const TextDivider = ({ text, direction = "right", icon }: TextDividerProps) => {
   useEffect(() => {
     const segment = [];
 
-  
     for (let i = 0; i < 15; i++) {
       segment.push(
         <div key={i} className="inline-flex items-center gap-6">
