@@ -1,36 +1,27 @@
-'use client'
+"use client";
 
 import { AnimatedSection } from "@/components/sections/AnimatedSection";
 import { DraggableCards } from "@/components/sections/DraggableCards";
 import { MediaPlayer } from "@/components/sections/MediaPlayer";
-import { ModernAccordion } from "@/components/ui/Accordion";
+import { ModernAccordion, AccordionItem } from "@/components/ui/Accordion";
 import Hero from "@/components/shared/Hero";
+
 import TextDivider from "@/components/shared/TextDivider";
-import { MicIcon, User2 } from "lucide-react";
+import { User2, Music, Headphones, Mail } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { aboutItems } from "@/constants/about-me/about-me-item.constant";
-
-const images = {
-  default: "/images/foto-3.jpg",
-  quien: "/images/foto-1.jpg",
-  trayectoria: "/images/foto-2.jpg",
-  logros: "/images/foto-4.jpg",
-  estilo: "/images/foto-5.jpg",
-};
-
-interface AccordionItem {
-  title: string;
-  content: string;
-  icon?: React.ReactNode;
-  imageKey?: string;
-}
+import { images } from "@/constants/about-me/images-to-about-me";
+import { ContactForm } from "@/components/sections/ContactForm";
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(images.default);
-
   const handleAccordionChange = (item: AccordionItem | null) => {
-    setCurrentImage(item?.imageKey ? images[item.imageKey] : images.default);
+    setCurrentImage(
+      item?.imageKey
+        ? images[item.imageKey as keyof typeof images]
+        : images.default
+    );
   };
 
   return (
@@ -38,16 +29,22 @@ export default function Home() {
       <Hero />
 
       <TextDivider
-        text="GRAN RAH • MÚSICA • ARTE • STORE • LETRAS"
+        text="SITIO OFICIAL GRAN RAH"
         direction="right"
+        icon={<Headphones className="text-black" size={60} strokeWidth={2} />}
+      />
+      <div id="music" className="bg-[#0A0A0A] w-full h-20"></div>
+      <TextDivider
+        text="MÚSICA "
+        direction="left"
+        icon={
+          <Music className="text-black font-bold" size={60} strokeWidth={2} />
+        }
       />
       <section className="max-w-[1200px] flex justify-center items-center m-auto">
         <AnimatedSection>
-          <div id="music" className="pt-10">
-            <h2 className="text-4xl flex font-bold items-center gap-2 text-slate-400 mb-6 my-20">
-              <MicIcon size={40} /> Música
-            </h2>
-            <div className="flex justify-center items-center m-auto">
+          <div id="music" className="md:my-28 flex justify-center mr-24">
+            <div className="flex flex-col md:flex-row justify-center items-center m-auto w-full">
               <DraggableCards />
               <MediaPlayer
                 spotifyUrl="https://open.spotify.com/embed/artist/6JjrF0EnCW3Ylj9gj3FXWZ?utm_source=generator"
@@ -57,24 +54,23 @@ export default function Home() {
           </div>
         </AnimatedSection>
       </section>
+      <div id="about" className="bg-[#0A0A0A] w-full h-20"></div>
       <TextDivider
-        text="ABOUT ME • ABOUT ME  • ABOUT ME  • ABOUT ME  • ABOUT ME "
-        direction="left"
+        text="ABOUT ME"
+        direction="right"
+        icon={<User2 className="text-black" size={60} strokeWidth={2} />}
       />
-      <section className="max-w-[1200px] flex justify-center items-center m-auto">
-        <AnimatedSection>
-          <div id="about" className="pt-10">
-            <h2 className="text-4xl flex font-bold items-center gap-2 text-slate-400 mb-6 my-20">
-              <User2 size={40} /> Sobre mi
-            </h2>
-            <div className="flex flex-col gap-12">
-              <div className="flex justify-center">
-                <div className="relative w-[500px] h-[300px] overflow-hidden rounded-2xl">
+      <section className="max-w-[1200px] p-20 flex justify-center items-center m-auto">
+        <AnimatedSection direction="right">
+          <div className="my-24 ">
+            <div className="flex flex-row gap-12">
+              <div className="flex justify-center ">
+                <div className="relative w-[500px] h-[500px] overflow-hidden rounded-2xl">
                   <Image
                     src={currentImage}
                     alt="about"
                     fill
-                    className="object-contain scale-150"
+                    className="object-contain scale-150 "
                   />
                 </div>
               </div>
@@ -88,10 +84,16 @@ export default function Home() {
           </div>
         </AnimatedSection>
       </section>
+      <div id="contact" className="bg-[#0A0A0A] w-full h-20"></div>
+
       <TextDivider
-        text="OTRA SECCION • MÚSICA • ARTE • STORE • LETRAS"
+        text="CONTACTO"
         direction="right"
+        icon={<Mail className="text-black" size={60} strokeWidth={2} />}
       />
+      <section className="max-w-[1200px] p-20 flex justify-center items-center m-auto">
+        <ContactForm />
+      </section>
     </main>
   );
 }

@@ -36,7 +36,7 @@ const Navbar = () => {
     <motion.nav
       initial="initial"
       animate="animate"
-      className="fixed top-2 left-1/2 -translate-x-1/2 w-[95%] max-w-3xl mx-auto z-50"
+      className="fixed w-full top-2 flex m-auto justify-center md:left-1/2 md:-translate-x-1/2 md:min-w-4xl mx-auto z-50"
     >
       <div className="rounded-full backdrop-blur-lg bg-background/60 border border-gray-200/20 shadow-lg px-4">
         <div className="flex h-16 items-center justify-between">

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-interface AccordionItem {
+export interface AccordionItem {
   title: string;
   content: string;
   icon?: React.ReactNode;
