@@ -55,7 +55,7 @@ export function ContactForm() {
                 {bars.map((i) => (
                   <motion.div
                     key={i}
-                    className="w-4 bg-yellow-500 rounded-sm"
+                    className="w-4 bg-red-800 rounded-sm"
                     animate={{
                       height: ["20%", "90%", "40%", "70%", "20%"],
                     }}
@@ -127,7 +127,7 @@ export function ContactForm() {
             />
             <Button
               type="submit"
-              className="cursor-pointer w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 text-white"
+              className="cursor-pointer w-full bg-gradient-to-r from-red-400 to-red-800 hover:from-red-700 hover:to-red-900 text-white"
             >
               Enviar Mensaje
             </Button>

@@ -17,7 +17,7 @@ export const MediaPlayer = ({
   return (
     <div className="w-full max-w-md bg-black/20 backdrop-blur-lg rounded-2xl overflow-hidden shadow-2xl">
       {/* Tabs */}
-      <div className="flex border-b border-white/10">
+      <div className="flex border-white/10">
         <button
           onClick={() => setActiveTab("spotify")}
           className={`flex-1 py-4 px-6 flex items-center justify-center gap-2 transition-all ${
@@ -43,7 +43,7 @@ export const MediaPlayer = ({
       </div>
 
       {/* Content */}
-      <div className="h-[400px] relative">
+      <div className="h-[400px] relative rounded-b-0 bg-gray-600">
         {activeTab === "spotify" ? (
           <iframe
             src={spotifyUrl}
@@ -51,7 +51,7 @@ export const MediaPlayer = ({
             height="100%"
             frameBorder="0"
             allow="encrypted-media"
-            className="absolute inset-0"
+            className="absolute inset-0 rounded-t-none"
           />
         ) : (
           <iframe

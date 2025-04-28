@@ -29,7 +29,7 @@ export const ModernAccordion = ({
   };
 
   return (
-    <div className="w-full space-y-4">
+    <div className="md:w-full md:space-y-4">
       {items.map((item, index) => (
         <motion.div
           key={index}

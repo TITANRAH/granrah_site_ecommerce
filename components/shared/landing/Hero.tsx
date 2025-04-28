@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <div className="relative">
-      <div className="relative h-[90vh] w-full overflow-hidden">
+      <div className="relative h-[31vh] md:h-[90vh] w-full overflow-hidden">
         <div className="absolute inset-0 bg-black/65 z-10 w-full" />
 
         <motion.div
@@ -16,11 +16,11 @@ const Hero = () => {
           className="relative w-full h-full"
         >
           <Image
-            src="/images/foto-9.jpeg"
+            src="/images/landing/foto-9.jpeg"
             alt="Gran Rah"
             fill
             priority
-            className="object-cover"
+            className="object-contain md:object-cover"
           />
         </motion.div>
       </div>

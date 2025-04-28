@@ -1,12 +1,12 @@
 "use client";
 
-import { AnimatedSection } from "@/components/sections/wrapper/AnimatedSection";
+import { AnimatedSection } from "@/components/sections/wrapper-animation/AnimatedSection";
 import { DraggableCards } from "@/components/sections/landing/DraggableCards";
 import { MediaPlayer } from "@/components/sections/landing/MediaPlayer";
 import { ModernAccordion, AccordionItem } from "@/components/ui/Accordion";
 import Hero from "@/components/shared/landing/Hero";
 
-import TextDivider from "@/components/shared/landing/TextDivider";
+import TextDivider from "@/components/shared/common/TextDivider";
 import { User2, Music, Headphones, Mail, Newspaper } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
@@ -44,12 +44,12 @@ export default function Home() {
       />
       <section className="max-w-[1200px] flex justify-center items-center m-auto">
         <AnimatedSection>
-          <div id="music" className="md:my-28 flex justify-center mr-24">
+          <div id="music" className="mx-10 md:my-28 flex justify-center md:mr-28 ">
             <div className="flex flex-col md:flex-row justify-center items-center m-auto w-full">
               <DraggableCards />
               <MediaPlayer
                 spotifyUrl="https://open.spotify.com/embed/artist/6JjrF0EnCW3Ylj9gj3FXWZ?utm_source=generator"
-                youtubeUrl="https://youtube.com/embed/@granrah?si=JEy3KxGqQloFWB4k"
+                youtubeUrl="https://www.youtube.com/embed/yvS-tOdqEAk?si=uDJBbgzRd4HODa0U" 
               />
             </div>
           </div>
@@ -63,18 +63,18 @@ export default function Home() {
       />
       <section className="max-w-[1200px] my-32 flex justify-center items-center m-auto">
         <AnimatedSection direction="right">
-            <div className="flex flex-row ">
-              <div className="flex justify-center ">
+            <div className="flex md:flex-row flex-col ">
+              <div className="flex justify-center items-center ">
                 <div className="relative w-[500px] h-[500px] overflow-hidden rounded-2xl">
                   <Image
                     src={currentImage}
                     alt="about"
                     fill
-                    className="object-contain scale-150 "
+                    className="object-contain md:scale-150 "
                   />
                 </div>
               </div>
-              <div className="max-w-3xl mx-auto w-full">
+              <div className="w-[350px] md:max-w-3xl mx-auto md:w-full">
                 <ModernAccordion
                   items={aboutItems}
                   onItemSelect={handleAccordionChange}
@@ -89,9 +89,9 @@ export default function Home() {
         direction="left"
         icon={<Newspaper className="text-black" size={60} strokeWidth={2} />}
       />
-      <section className="max-w-[1200px] p-20 flex justify-center items-center m-auto">
+      <section className="max-w-[1200px] md:p-20 flex justify-center items-center m-auto">
         <AnimatedSection direction="right">
-          <div className="my-24 ">
+          <div className="my-24">
             <News />
           </div>
         </AnimatedSection>
@@ -103,7 +103,7 @@ export default function Home() {
         direction="right"
         icon={<Mail className="text-black" size={60} strokeWidth={2} />}
       />
-      <section className="max-w-[1200px] p-20 flex justify-center items-center m-auto">
+      <section className="max-w-[1200px] md:p-20 flex justify-center items-center m-auto">
         <ContactForm />
       </section>
     </main>
