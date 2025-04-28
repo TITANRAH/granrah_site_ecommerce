@@ -5,4 +5,5 @@ export const links = [
   { href: "/#news", label: "News" },
   { href: "/#contact", label: "Contacto" },
   { href: "/store", label: "Tienda" },
+  { href: "/galeria", label: "Galería" },
 ];

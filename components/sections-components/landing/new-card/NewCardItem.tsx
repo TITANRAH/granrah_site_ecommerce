@@ -3,9 +3,11 @@ import React from 'react'
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 interface NewCardItemProps {
     news: {
+        id: string;
         title: string;
         image: string;
         description: string;
@@ -49,10 +51,10 @@ function NewCardItem({news}: NewCardItemProps) {
             className="text-red-500 hover:text-red-400 hover:bg-red-500/10 group-hover:translate-x-2 transition-all duration-300"
             asChild
           >
-            <a href={news.link} className="group">
+            <Link href={`/new/${news.id}`} className="group">
               Leer más
               <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
+            </Link>
           </Button>
         </CardContent>
       </div>

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
-import { newsData } from "@/constants/landing/news/news.data.json";
 import NewCardItem from "@/components/sections-components/landing/new-card/NewCardItem";
+import { newsData } from "@/constants/landing/news/news.data.json";
 
 export default function News() {
   return (

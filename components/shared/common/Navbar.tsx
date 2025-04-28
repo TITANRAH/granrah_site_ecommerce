@@ -127,7 +127,7 @@ const Navbar = () => {
               </motion.div>
             </div>
 
-            <div className="hidden md:flex items-center space-x-6 mr-10">
+            <div className="hidden md:flex items-center space-x-2 mr-10">
               {links.map((link, i) => (
                 <motion.div
                   key={link.href}

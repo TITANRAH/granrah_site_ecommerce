@@ -1,0 +1,36 @@
+{
+  "newsDataJson": [
+    {
+      "id": "1",
+      "title": "¡Nuevo Álbum Disponible!",
+      "image": "/news/album.jpg",
+      "description": "Gran Rah lanza su esperado álbum con colaboraciones internacionales y sonidos innovadores. ¡Escúchalo ya en todas las plataformas!",
+      "category": "Música",
+      "date": "2024-03-15"
+    },
+    {
+      "id": "2",
+      "title": "Gira Mundial 2024",
+      "image": "/news/tour.jpg",
+      "description": "La gira mundial de Gran Rah comienza en marzo. Consulta las fechas y ciudades para no perderte el show en vivo.",
+      "category": "Tour",
+      "date": "2024-03-10"
+    },
+    {
+      "id": "3",
+      "title": "Premio a Mejor Artista Urbano",
+      "image": "/news/award.jpg",
+      "description": "Gran Rah recibe el premio a Mejor Artista Urbano del año. Un reconocimiento a su trayectoria y dedicación.",
+      "category": "Premios",
+      "date": "2024-03-05"
+    },
+    {
+      "id": "4",
+      "title": "Nuevo Videoclip: 'Luz y Sombra'",
+      "image": "/news/videoclip.jpg",
+      "description": "Ya puedes ver el nuevo videoclip de Gran Rah, una producción visual impactante y llena de energía.",
+      "category": "Visual",
+      "date": "2024-03-01"
+    }
+  ]
+}

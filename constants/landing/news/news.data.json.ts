@@ -2,6 +2,7 @@ import image from"../../../public/images/landing/noticia-1.jpg"
 
 export const newsData = [
     {
+      id: "1",
       title: "¡Nuevo Álbum Disponible!",
       image: image.src,
       description:
@@ -10,6 +11,7 @@ export const newsData = [
       category: "Música",
     },
     {
+      id: "2",
       title: " Gira Mundial 2024",
       image: image.src,
       description:
@@ -18,6 +20,7 @@ export const newsData = [
       category: "Tour",
     },
     {
+      id: "3",
       title: "Premio a Mejor Artista Urbano",
       image: image.src,
       description:
@@ -26,6 +29,7 @@ export const newsData = [
       category: "Premios",
     },
     {
+      id: "4",
       title: "Nuevo Videoclip: 'Luz y Sombra'",
       image: image.src,
       description:
