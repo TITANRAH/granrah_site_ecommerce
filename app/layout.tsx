@@ -37,7 +37,7 @@ export default function RootLayout({
         className={`${bebasNeue.variable}`}
       >
         <Navbar />
-        <main className="min-h-screen bg-[#0A0A0A] pt-0">{children}</main>
+        <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-0">{children}</main>
         <Footer />
       </body>
     </html>

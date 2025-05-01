@@ -8,9 +8,10 @@ interface TextDividerProps {
   text: string;
   direction?: "left" | "right";
   icon?: React.ReactNode;
+  className?: string;
 }
 
-const TextDivider = ({ text, direction = "right", icon }: TextDividerProps) => {
+const TextDivider = ({ text, direction = "right", icon, className }: TextDividerProps) => {
   const [repeatedText, setRepeatedText] = useState<React.ReactNode[]>([]);
 
   const sparklePositions = [20, 40, 60, 80, 90];
@@ -35,7 +36,7 @@ const TextDivider = ({ text, direction = "right", icon }: TextDividerProps) => {
   }, [text, icon]);
 
   return (
-    <div className="relative h-[80px] md:h-[100px] overflow-hidden flex items-center bg-black">
+    <div className={`relative h-[80px] md:h-[100px] overflow-hidden flex items-center bg-black ${className}`}>
       {sparklePositions.map((position, i) => (
         <motion.div
           key={i}

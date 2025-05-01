@@ -14,6 +14,8 @@ import { aboutItems } from "@/constants/landing/about-me/about-me-item.constant"
 import { images } from "@/constants/landing/about-me/images-to-about-me";
 import { ContactForm } from "@/components/sections/landing/ContactForm";
 import News from "@/components/sections/landing/News";
+import FeaturedNews from "@/components/sections/landing/FeaturedNews";
+import { featuredNewsData } from "@/constants/landing/news/featured-news.data";
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(images.default);
@@ -34,7 +36,7 @@ export default function Home() {
         direction="right"
         icon={<Headphones className="text-black" size={60} strokeWidth={2} />}
       />
-      <div id="music" className="bg-[#0A0A0A] w-full h-20"></div>
+      <div id="music" className=" w-full h-20"></div>
       <TextDivider
         text="MÚSICA "
         direction="left"
@@ -58,7 +60,7 @@ export default function Home() {
           </div>
         </AnimatedSection>
       </section>
-      <div id="about" className="bg-[#0A0A0A] w-full h-20"></div>
+      <div id="about" className=" w-full h-20"></div>
       <TextDivider
         text="ABOUT ME"
         direction="right"
@@ -86,27 +88,31 @@ export default function Home() {
           </div>
         </AnimatedSection>
       </section>
-      <div id="news" className="bg-[#0A0A0A] w-full h-20"></div>
+      <div id="news" className=" w-full h-20"></div>
       <TextDivider
         text="NEWS"
         direction="left"
         icon={<Newspaper className="text-black" size={60} strokeWidth={2} />}
       />
-      <section className="max-w-[1200px] md:p-20 flex justify-center items-center m-auto">
+      <section className="max-w-[1200px] px-20 mt-20 flex justify-center items-center m-auto">
+          <div className="px-20">
+            <FeaturedNews {...featuredNewsData} />
+            <div>
+
         <AnimatedSection direction="right">
-          <div className="my-24">
             <News />
-          </div>
         </AnimatedSection>
+            </div>
+          </div>
       </section>
 
+      <div id="contact" className=" w-full h-20"></div>
       <TextDivider
         text="CONTACTO"
         direction="right"
         icon={<Mail className="text-black" size={60} strokeWidth={2} />}
       />
-      <div id="contact" className="bg-[#0A0A0A] w-full h-20"></div>
-      <section className="max-w-[1200px] md:p-20 flex justify-center items-center m-auto">
+      <section className="max-w-[1200px] my-5  flex justify-center items-center m-auto">
         <ContactForm />
       </section>
     </main>

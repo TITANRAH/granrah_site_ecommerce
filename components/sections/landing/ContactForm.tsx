@@ -46,12 +46,12 @@ export function ContactForm() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md p-6 bg-[#0A0A0A] backdrop-blur-sm rounded-xl shadow-xl"
+        className="w-full max-w-md p-6  backdrop-blur-sm rounded-xl shadow-xl"
       >
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <div className="flex justify-center mb-6">
-              <div className="w-full h-20 bg-[#0A0A0A] rounded-xl overflow-hidden p-4 flex items-center justify-center gap-2">
+              <div className="w-full h-20 rounded-xl overflow-hidden p-4 flex items-center justify-center gap-2">
                 {bars.map((i) => (
                   <motion.div
                     key={i}
