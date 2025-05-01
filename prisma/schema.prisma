@@ -1,93 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
-    provider = "prisma-client-js"
-    output   = "../lib/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-model Cliente {
-    id        Int      @id @default(autoincrement())
-    nombre    String
-    correo    String   @unique
-    haspassword  String
-    rol       String   @default("USER")
-    pedidos   Pedido[]
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model NewCategory {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  news        New[] // Relación con las noticias
 }
 
-model Producto {
-    id           Int              @id @default(autoincrement())
-    nombre       String
-    sku          String           @unique
-    precioCosto  Float
-    descripcion  String?
-    imagenUrl    String
-    activo       Boolean          @default(true)
-    categoriaId  Int
-    categoria    Categoria        @relation(fields: [categoriaId], references: [id])
-    bodegas      BodegaProducto[]
-    lineasPedido LineaPedido[]
-    createdAt    DateTime         @default(now())
-    updatedAt    DateTime         @updatedAt
-}
+model New {
+  id           String      @id @default(uuid())
+  title        String
+  textPrev     String
+  srcImages    String[]
+  urlVideos    String[]
+  noticeTextP1 String
+  noticeTextP2 String?
+  noticeTextP3 String?
+  noticeTextP4 String?
+  isFeatured   Boolean     @default(false)
+  categoryId   String
+  category     NewCategory @relation(fields: [categoryId], references: [id])
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
 
-model Categoria {
-    id        Int         @id @default(autoincrement())
-    nombre    String
-    slug      String      @unique
-    orden     Int?        @default(0)
-    visible   Boolean     @default(true)
-    parentId  Int?
-    parent    Categoria?  @relation("CategoriaPadre", fields: [parentId], references: [id])
-    hijos     Categoria[] @relation("CategoriaPadre")
-    productos Producto[]
-    createdAt DateTime    @default(now())
-    updatedAt DateTime    @updatedAt
-}
-
-model BodegaProducto {
-    id         Int      @id @default(autoincrement())
-    productoId Int
-    bodegaId   Int
-    stock      Int
-    producto   Producto @relation(fields: [productoId], references: [id])
-    bodega     Bodega   @relation(fields: [bodegaId], references: [id])
-    createdAt  DateTime @default(now())
-    updatedAt  DateTime @updatedAt
-}
-
-model Bodega {
-    id        Int              @id @default(autoincrement())
-    nombre    String
-    stock     BodegaProducto[]
-    createdAt DateTime         @default(now())
-    updatedAt DateTime         @updatedAt
-}
-
-model Pedido {
-    id        Int           @id @default(autoincrement())
-    clienteId Int
-    total     Float
-    pagoTipo  String // "EFECTIVO", "QR", etc.
-    estado    String        @default("PENDIENTE") // PENDIENTE, PAGADO, ENVIADO, ENTREGADO
-    cliente   Cliente       @relation(fields: [clienteId], references: [id])
-    lineas    LineaPedido[]
-    createdAt DateTime      @default(now())
-    updatedAt DateTime      @updatedAt
-}
-
-model LineaPedido {
-    id         Int      @id @default(autoincrement())
-    pedidoId   Int
-    productoId Int
-    cantidad   Int
-    precio     Float // Precio al momento de la compra
-    producto   Producto @relation(fields: [productoId], references: [id])
-    pedido     Pedido   @relation(fields: [pedidoId], references: [id])
-    createdAt  DateTime @default(now())
-    updatedAt  DateTime @updatedAt
+  @@index([categoryId])
 }

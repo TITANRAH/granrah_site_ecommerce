@@ -33,13 +33,13 @@ export const DraggableCards = () => {
         {/* Controles laterales en escritorio */}
         <button
           onClick={moveLeft}
-          className="hidden sm:flex absolute left-4 z-50 md:-left-10 p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300 text-white top-1/2 -translate-y-1/2"
+          className="hidden sm:flex absolute left-4 z-50 md:-left-10 p-2 bg-black rounded-full transition-all duration-300 text-white top-1/2 -translate-y-1/2"
         >
           <ChevronLeft size={40} />
         </button>
         <button
           onClick={moveRight}
-          className="hidden sm:flex absolute right-4 md:-right-10 p-2 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all duration-300 text-white z-50 top-1/2 -translate-y-1/2"
+          className="hidden sm:flex absolute right-4 md:-right-10 p-2 bg-black backdrop-blur-sm rounded-full  transition-all duration-300 text-white z-50 top-1/2 -translate-y-1/2"
         >
           <ChevronRight size={40} />
         </button>

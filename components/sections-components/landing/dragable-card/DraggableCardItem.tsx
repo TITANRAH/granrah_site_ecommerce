@@ -40,9 +40,9 @@ function DraggableCardItem({ card, distance }: DraggableCardItemProps) {
           <Button
             variant="outline"
             onClick={() => router.push(`/album/${card.id}`)}
-            className="cursor-pointer"
+            className="cursor-pointer dark:border-white"
           >
-            <EyeIcon size={20} />
+            <EyeIcon size={20} color="white" />
             <p className="text-base text-white/90">Ver Album</p>
           </Button>
 

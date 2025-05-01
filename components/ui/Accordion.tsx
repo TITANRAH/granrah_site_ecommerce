@@ -44,7 +44,7 @@ export const ModernAccordion = ({
           >
             <div className="flex items-center gap-4">
               {item.icon}
-              <span className="text-xl font-semibold text-slate-200">
+              <span className="text-xl font-semibold text-foreground">
                 {item.title}
               </span>
             </div>
@@ -90,7 +90,7 @@ export const ModernAccordion = ({
                 }}
                 className="overflow-hidden"
               >
-                <div className="p-6 pt-0 text-slate-300 leading-relaxed">
+                <div className="p-6 pt-0 text-foreground leading-relaxed">
                   {item.content}
                 </div>
               </motion.div>

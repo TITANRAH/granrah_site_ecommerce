@@ -46,7 +46,7 @@ export default function FeaturedNews({
           animate={{ opacity: 1, y: 0 }}
           className="mt-12"
         >
-          <Link href={`/noticias/${id}`}>
+          <Link href={`/new/${id}`}>
             <div
               className="group relative overflow-hidden rounded-2xl cursor-pointer"
               onMouseEnter={() => setIsHovered(true)}

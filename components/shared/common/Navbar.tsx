@@ -69,7 +69,7 @@ const Navbar = () => {
     <motion.nav
       initial="initial"
       animate="animate"
-      className="fixed bg-background w-full top-2 flex m-auto justify-center md:left-1/2 md:-translate-x-1/2 md:min-w-4xl mx-auto z-50"
+      className="fixed  bg-background w-full top-2 flex m-auto justify-center md:left-1/2 md:-translate-x-1/2 md:min-w-4xl mx-auto z-50"
     >
       <div className="w-full md:grid md:grid-cols-12 md:gap-10 mx-auto flex justify-center m-auto">
         <div className="hidden col-span-3 md:flex items-center justify-center gap-4">
@@ -78,11 +78,11 @@ const Navbar = () => {
             variant="outline"
             className="rounded-full flex items-center justify-center bg-background text-xl"
           >
-            <User  /> iniciar sesión
+            <User /> iniciar sesión
           </Button>
         </div>
 
-        <nav className="mx-10 md:mx-0 col-span-7 w-full rounded-full backdrop-blur-lg bg-background/60 dark:bg-dark-100/60 border border-gray-200/20 shadow-lg">
+        <nav className="mx-10  md:mx-0 col-span-7 w-full rounded-full backdrop-blur-lg bg-background/60 dark:bg-dark-100/60 border border shadow-lg">
           <div className="flex h-16 items-center justify-between">
             {/* Switch Container */}
             <div
@@ -131,8 +131,10 @@ const Navbar = () => {
                   fill
                   className="object-cover"
                   style={{
-                    filter: `
-                      brightness(200%)
+                    filter: ` ${
+                      theme === "dark" ? "brightness(200%)" : "brightness(100%)"
+                    }
+                     
                       contrast(200%)
                       drop-shadow(2px 2px 2px rgba(0,0,0,0.2))
                     `,

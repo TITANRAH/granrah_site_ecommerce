@@ -7,6 +7,7 @@ import { newsDataJson } from "@/constants/landing/news/news.data-json.json";
 import Link from "next/link";
 import { use } from "react";
 import TextDivider from "@/components/shared/common/TextDivider";
+import ShareButtons from "@/components/shared/common/ShareButtons";
 
 export default function New({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -18,21 +19,20 @@ export default function New({ params }: { params: Promise<{ id: string }> }) {
   }
 
   return (
-    
     <div className="min-h-screen bg-background">
       <div className="">
-      <TextDivider text="Noticias" />
+        <TextDivider text="Noticias" />
 
         <div className="grid container grid-cols-1 lg:grid-cols-3 gap-8 mx-auto ">
           {/* Columna Principal (2/3) */}
           <div className="lg:col-span-2">
-        <Link
-          href="/#news"
-          className="mb-8 px-4 py-2 w-24 rounded-xl text-red-500 hover:text-red-400 hover:bg-red-500/10 flex items-center"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Volver
-        </Link>
+            <Link
+              href="/#news"
+              className="mb-8 px-4 py-2 w-24 rounded-xl text-red-500 hover:text-red-400 hover:bg-red-500/10 flex items-center"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Volver
+            </Link>
             <div className="bg-background/95 backdrop-blur-lg rounded-2xl overflow-hidden border border-red-500/20">
               <div className="relative h-[400px] w-full">
                 <Image
@@ -43,6 +43,7 @@ export default function New({ params }: { params: Promise<{ id: string }> }) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
+
               <div className="p-8">
                 <div className="flex items-center gap-4 mb-4">
                   <span className="px-3 py-1 text-sm font-medium bg-red-500/20 text-red-400 rounded-full border border-red-400/30">
@@ -54,6 +55,7 @@ export default function New({ params }: { params: Promise<{ id: string }> }) {
                 </div>
                 <h1 className="text-4xl font-bold text-red-500 mb-6">
                   {currentNew.title}
+                  <ShareButtons title={currentNew.title} />
                 </h1>
                 <div className="prose prose-invert max-w-none">
                   <p className="text-lg text-foreground leading-relaxed">

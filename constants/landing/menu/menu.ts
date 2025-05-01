@@ -4,6 +4,7 @@ export const links = [
   { href: "/#about", label: "Sobre Mí" },
   { href: "/#news", label: "News" },
   { href: "/#contact", label: "Contacto" },
-  { href: "/store", label: "Tienda" },
   { href: "/galeria", label: "Galería" },
+  { href: "/store", label: "Tienda" },
+  { href: "/blog", label: "Blog" },
 ];

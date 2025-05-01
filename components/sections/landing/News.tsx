@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import NewCardItem from "@/components/sections-components/landing/new-card/NewCardItem";
 import { newsData } from "@/constants/landing/news/news.data.json";
 
+
 export default function News() {
   return (
     <section className="w-full h-full md:max-w-6xl mx-auto px-4 ">
@@ -11,6 +12,7 @@ export default function News() {
         <div className="h-1 flex-1 bg-gradient-to-r from-red-500/50 to-transparent ml-4" />
       </div>
       <div className="grid gap-8">
+       
         {newsData.map((news, index) => (
           <motion.div
             key={index}

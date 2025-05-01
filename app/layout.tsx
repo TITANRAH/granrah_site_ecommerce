@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "./theme-provider";
 import Navbar from "@/components/shared/common/Navbar";
 import Footer from "@/components/shared/common/Footer";
+import { Toaster } from "sonner";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
           <Navbar />
           <main className="min-h-screen bg-background pt-20">{children}</main>
           <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
