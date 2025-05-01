@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   darkMode: ["class"],
   content: [
     './pages/**/*.{ts,tsx}',
@@ -50,6 +50,17 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        dark: {
+            '100': '#000000',
+            '200': '#0F1117',
+            '300': '#151821',
+            '400': '#212734',
+            '500': '#101012',
+            'bg-color': '#000000'
+        },
+        light: {
+            'bg-color': '#FFFFFF'
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -73,4 +84,6 @@ module.exports = {
     },
   },
   plugins: [],
-} 
+}
+
+export default config 

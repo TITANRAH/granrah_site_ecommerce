@@ -61,7 +61,7 @@ const TextDivider = ({ text, direction = "right", icon, className }: TextDivider
       ))}
       <motion.div
         className={cn(
-          "whitespace-nowrap text-6xl py-4 text-slate-100  flex items-center gap-6"
+          "whitespace-nowrap text-6xl mt-3 text-slate-100  flex items-center gap-6"
         )}
         animate={{
           x: direction === "right" ? [0, -3000] : [-3000, 0],

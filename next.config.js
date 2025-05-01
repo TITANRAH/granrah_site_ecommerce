@@ -11,6 +11,13 @@ const nextConfig = {
     }
     return config;
   },
+  turbopack: {
+    rules: {
+      // Configuración de reglas de Turbopack
+      '*.{js,jsx,ts,tsx}': ['eslint'],
+      '*.{css,scss}': ['postcss'],
+    },
+  },
 };
 
 module.exports = nextConfig; 

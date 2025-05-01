@@ -185,7 +185,7 @@ export default function Gallery() {
 
   
   return (
-    <section className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black py-20">
+    <section className="min-h-screen bg-background">
         <TextDivider text="Galería" />
       <div className="container mx-auto px-4 my-20">
 

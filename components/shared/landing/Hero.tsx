@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const Hero = () => {
   return (
     <div className="relative">
-      <div className="relative h-[31vh] md:h-[90vh] w-full overflow-hidden">
+      <div className="relative h-[31vh] md:h-[81vh] w-full overflow-hidden">
         <div className="absolute inset-0 bg-black/65 z-10 w-full" />
 
         <motion.div

@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import {  Bebas_Neue } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "./theme-provider";
 import Navbar from "@/components/shared/common/Navbar";
 import Footer from "@/components/shared/common/Footer";
+
+// const inter = Inter({ subsets: ["latin"] });
 
 // const teko = Teko({
 //   subsets: ["latin"],
@@ -32,13 +35,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <body
-        className={`${bebasNeue.variable}`}
+        className={`${bebasNeue.className} bg-white dark:bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-black`}
       >
-        <Navbar />
-        <main className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black pt-0">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="min-h-screen bg-background pt-20">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

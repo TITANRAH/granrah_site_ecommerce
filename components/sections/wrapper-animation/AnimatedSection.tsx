@@ -36,7 +36,7 @@ export const AnimatedSection = ({
     offset: ["start end", "end start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
   const x = useTransform(
     scrollYProgress,
     [0, 0.2],

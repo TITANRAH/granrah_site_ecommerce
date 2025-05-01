@@ -43,7 +43,7 @@ export const MediaPlayer = ({
       </div>
 
       {/* Content */}
-      <div className="h-[400px] relative rounded-b-0 bg-gray-600">
+      <div className="h-[400px] relative rounded-b-0">
         {activeTab === "spotify" ? (
           <iframe
             src={spotifyUrl}

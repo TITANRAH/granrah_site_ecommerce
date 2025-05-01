@@ -9,7 +9,7 @@ export const cards: Card[] = [
   {
     id: 1,
     title: "Titán",
-    image: "/images/album-covers/titan.jpg",
+    image: "/images/landing/album-covers/titan.jpg",
     venta: true,
   },
   {

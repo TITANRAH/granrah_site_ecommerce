@@ -19,8 +19,8 @@ export default function New({ params }: { params: Promise<{ id: string }> }) {
 
   return (
     
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
-      <div className="  my-20 ">
+    <div className="min-h-screen bg-background">
+      <div className="">
       <TextDivider text="Noticias" />
 
         <div className="grid container grid-cols-1 lg:grid-cols-3 gap-8 mx-auto ">
@@ -56,58 +56,58 @@ export default function New({ params }: { params: Promise<{ id: string }> }) {
                   {currentNew.title}
                 </h1>
                 <div className="prose prose-invert max-w-none">
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  <p className="text-lg text-foreground leading-relaxed">
                     {currentNew.description}
                   </p>
                 </div>

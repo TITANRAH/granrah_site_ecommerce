@@ -12,9 +12,10 @@ import {
   MessageCircle,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { links } from "@/constants/landing/menu/menu";
 import { useRouter } from "next/navigation";
+
 import {
   Sheet,
   SheetContent,
@@ -22,11 +23,21 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const linkVariants = {
     initial: { scale: 0.9, opacity: 0 },
@@ -58,44 +69,47 @@ const Navbar = () => {
     <motion.nav
       initial="initial"
       animate="animate"
-      className="fixed w-full top-2 flex m-auto justify-center md:left-1/2 md:-translate-x-1/2 md:min-w-4xl mx-auto z-50"
+      className="fixed bg-background w-full top-2 flex m-auto justify-center md:left-1/2 md:-translate-x-1/2 md:min-w-4xl mx-auto z-50"
     >
       <div className="w-full md:grid md:grid-cols-12 md:gap-10 mx-auto flex justify-center m-auto">
         <div className="hidden col-span-3 md:flex items-center justify-center gap-4">
-          <div>Bienvenido Sergio</div>
-          <Button variant="outline" className="rounded-full">
-            <User size={20} /> iniciar sesión
+          <div className="text-xl">Bienvenido Sergio</div>
+          <Button
+            variant="outline"
+            className="rounded-full flex items-center justify-center bg-background text-xl"
+          >
+            <User  /> iniciar sesión
           </Button>
         </div>
 
-        <nav className="mx-10 md:mx-0 col-span-7 w-full rounded-full backdrop-blur-lg bg-background/60 border border-gray-200/20 shadow-lg">
+        <nav className="mx-10 md:mx-0 col-span-7 w-full rounded-full backdrop-blur-lg bg-background/60 dark:bg-dark-100/60 border border-gray-200/20 shadow-lg">
           <div className="flex h-16 items-center justify-between">
             {/* Switch Container */}
             <div
               className="relative w-[200px] h-[65px] cursor-pointer flex items-center"
-              onClick={() => setIsDark(!isDark)}
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             >
               {/* Sun/Moon Icons */}
               <div className="absolute inset-0 flex justify-between items-center px-4">
                 <motion.div
                   animate={{
-                    opacity: isDark ? 1 : 0,
+                    opacity: theme === "dark" ? 1 : 0,
                   }}
                   transition={{
                     duration: 0.2,
                   }}
                 >
-                  <Sun className="w-8 h-8 text-gray-400" />
+                  <Sun className="w-8 h-8 text-foreground" />
                 </motion.div>
                 <motion.div
                   animate={{
-                    opacity: isDark ? 0 : 1,
+                    opacity: theme === "dark" ? 0 : 1,
                   }}
                   transition={{
                     duration: 0.2,
                   }}
                 >
-                  <Moon className="w-8 h-8 text-gray-400" />
+                  <Moon className="w-8 h-8 text-foreground" />
                 </motion.div>
               </div>
 
@@ -103,7 +117,7 @@ const Navbar = () => {
               <motion.div
                 className="absolute w-[65px] h-[65px]"
                 animate={{
-                  x: isDark ? 132 : 0,
+                  x: theme === "dark" ? 132 : 0,
                 }}
                 transition={{
                   type: "spring",
@@ -112,7 +126,7 @@ const Navbar = () => {
                 }}
               >
                 <Image
-                  src="/images/logo.png"
+                  src="/images/landing/logo.png"
                   alt="Gran Rah Logo"
                   fill
                   className="object-cover"
@@ -137,7 +151,7 @@ const Navbar = () => {
                 >
                   <Link
                     href={link.href}
-                    className="text-sm font-medium relative group px-3 py-2"
+                    className="text-xl font-medium relative group px-3 py-2"
                   >
                     <span className="relative z-10 hover:text-gray-400">
                       {link.label}

@@ -44,11 +44,11 @@ export default function Home() {
           <Music className="text-black font-bold" size={60} strokeWidth={2} />
         }
       />
-      <section className="max-w-[1200px] flex justify-center items-center m-auto">
+      <section className="max-w-[1200px] flex justify-center dark:bg-green items-center m-auto">
         <AnimatedSection>
           <div
             id="music"
-            className="mx-10 md:my-28 flex justify-center md:mr-28 "
+            className="mx-10 md:my-28 flex justify-center md:mr-28 light:bg-green "
           >
             <div className="flex flex-col md:flex-row justify-center items-center m-auto w-full">
               <DraggableCards />
@@ -68,7 +68,7 @@ export default function Home() {
       />
       <section className="max-w-[1200px] my-32 flex justify-center items-center m-auto">
         <AnimatedSection direction="right">
-          <div className="flex md:flex-row flex-col ">
+          <div className="flex md:flex-row flex-col gap-10 ">
             <div className="flex justify-center items-center ">
               <div className="relative w-[500px] h-[500px] overflow-hidden rounded-2xl">
                 <Image
@@ -94,7 +94,7 @@ export default function Home() {
         direction="left"
         icon={<Newspaper className="text-black" size={60} strokeWidth={2} />}
       />
-      <section className="max-w-[1200px] px-20 mt-20 flex justify-center items-center m-auto">
+      <section className="max-w-[1200px] px-20 mt-5 flex justify-center items-center m-auto">
           <div className="px-20">
             <FeaturedNews {...featuredNewsData} />
             <div>

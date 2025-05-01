@@ -4,7 +4,7 @@ import { Instagram, Facebook, Youtube } from "lucide-react"
 
 const Footer = () => {
   return (
-    <footer className="bg-background border-t">
+    <footer className="bg-background border-t text-xl">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
           {/* Logo y descripción */}
@@ -22,26 +22,26 @@ const Footer = () => {
           </div>
 
           {/* Enlaces rápidos */}
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center text-2xl">
             <h4 className="font-semibold mb-4">Enlaces</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/music" className="text-muted-foreground hover:text-foreground transition">
+                <Link href="/music" className="text-xl text-muted-foreground hover:text-foreground transition">
                   Música
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-foreground transition">
+                <Link href="/about" className="text-xl text-muted-foreground hover:text-foreground transition">
                   Sobre Mí
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-foreground transition">
+                <Link href="/contact" className="text-xl text-muted-foreground hover:text-foreground transition">
                   Contacto
                 </Link>
               </li>
               <li>
-                <Link href="/store" className="text-muted-foreground hover:text-foreground transition">
+                <Link href="/store" className="text-xl text-muted-foreground hover:text-foreground transition">
                   Tienda
                 </Link>
               </li>
@@ -50,8 +50,8 @@ const Footer = () => {
 
           {/* Contacto */}
           <div className="flex flex-col items-center">
-            <h4 className="font-semibold mb-4">Contacto</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="font-semibold mb-4 text-2xl">Contacto</h4>
+            <ul className="space-y-2 text-xl">
               <li className="text-muted-foreground">
                 Email: contacto@granrah.com
               </li>
@@ -63,7 +63,7 @@ const Footer = () => {
 
           {/* Redes Sociales */}
           <div className="flex flex-col items-center">
-            <h4 className="font-semibold mb-4">Sígueme</h4>
+            <h4 className="font-semibold mb-4 text-2xl">Sígueme</h4>
             <div className="flex justify-center space-x-4">
               <Link 
                 href="https://instagram.com" 
