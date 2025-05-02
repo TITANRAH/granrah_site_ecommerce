@@ -10,7 +10,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import NewCardItem from "@/components/sections/landing/components/NewCardItem";
 import { Button } from "@/components/ui/button";
-import {ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { ChevronLeft, ChevronRight, Filter } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -18,6 +18,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import NewsCardSkeleton from "@/components/sections/landing/components/skeletons/NewCardSkeleton";
+
 
 
 function AllNewsPage() {
@@ -112,8 +114,6 @@ function AllNewsPage() {
         Todas las Noticias
       </h1>
 
-   
-
       {/* Filtros con select de categorías */}
       <div className="flex flex-col md:flex-row gap-4 mb-8 items-start md:items-center">
         <div className="flex items-center gap-2">
@@ -129,10 +129,10 @@ function AllNewsPage() {
             <SelectTrigger>
               <SelectValue placeholder="Selecciona una categoría" />
             </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">Todas las categorías</SelectItem>
+            <SelectContent className=" bg-black/70">
+              <SelectItem value="all" className="text-white">Todas las categorías</SelectItem>
               {categories.map((cat) => (
-                <SelectItem key={cat.id} value={cat.id}>
+                <SelectItem key={cat.id} value={cat.id} className="text-white">
                   {cat.name}
                 </SelectItem>
               ))}
@@ -142,8 +142,15 @@ function AllNewsPage() {
       </div>
 
       {loading ? (
-        <div className="flex justify-center items-center min-h-[50vh]">
-          <div className="w-16 h-16 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {Array.from({ length: limit }, (_, i) => (
+            <div
+              key={i}
+              className="transform hover:-translate-y-2 transition-transform duration-300"
+            >
+              <NewsCardSkeleton />
+            </div>
+          ))}
         </div>
       ) : news.length === 0 ? (
         <div className="text-center py-20">

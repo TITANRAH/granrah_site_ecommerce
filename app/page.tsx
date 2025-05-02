@@ -5,19 +5,25 @@ import { ModernAccordion } from "@/components/ui/Accordion";
 import Hero from "@/components/sections/landing/Hero";
 
 import TextDivider from "@/components/common/TextDivider";
-import { User2, Music, Headphones, Mail, Newspaper } from "lucide-react";
+import {
+  User2,
+  Music,
+  Headphones,
+  Mail,
+  Newspaper,
+  ChevronLeft,
+} from "lucide-react";
 
 import { aboutItems } from "@/constants/landing/about-me/about-me-item.constant";
 import { ContactForm } from "@/components/sections/landing/ContactForm";
-import News from "@/components/sections/landing/News";
 import FeaturedNews from "@/components/sections/landing/FeaturedNews";
 import { getNews } from "@/actions/landing/get.news.action";
+import Link from "next/link";
 
 export default async function Home() {
-  const news = await getNews({ page: 1, limit: 4 });
+  const news = await getNews({ page: 1, limit: 1 });
 
-  const featuredNews = news.data.find((news) => news.isFeatured);
-  const newsWithoutFeatured = news.data.filter((news) => news != featuredNews);
+  const featuredNews = news.data[0];
 
   return (
     <main>
@@ -76,21 +82,23 @@ export default async function Home() {
         direction="left"
         icon={<Newspaper className="text-black" size={60} strokeWidth={2} />}
       />
-      <section className="max-w-[1200px] px-20 mt-5 flex justify-center items-center m-auto">
-        <div className="px-20">
-          {featuredNews && <FeaturedNews newsItem={featuredNews!} />}
+      <section className="max-w-[1200px]  mt-5 flex justify-center items-center m-auto">
+        <div className="">
+          <div className="flex flex-col">
+            {featuredNews && <FeaturedNews newsItem={featuredNews!} />}
 
-          {newsWithoutFeatured.length === 0 && (
-            <main className="flex justify-center items-center h-screen">
-              <p>Error cargando noticias.</p>
+            <Link
+              href="/all-news"
+              className="w-[250px] px-4 py-2 mt-2  text-2xl  rounded-xl text-red-500 hover:text-red-400 hover:bg-red-500/10 flex items-center"
+            >
+              <ChevronLeft className="w-4 h-4 mr-2" />
+              Ver todas las noticias
+            </Link>
+          </div>
+          {!featuredNews && (
+            <main className="flex justify-center items-center h-[50vh] text-3xl">
+              <p>Sin noticias disponibles</p>
             </main>
-          )}
-          {newsWithoutFeatured.length > 0 && (
-            <div>
-              <AnimatedSection direction="right">
-                <News news={newsWithoutFeatured} />
-              </AnimatedSection>
-            </div>
           )}
         </div>
       </section>

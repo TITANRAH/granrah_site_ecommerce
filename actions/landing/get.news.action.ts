@@ -39,7 +39,7 @@ export async function getNews(
     const queryOptions: Prisma.NewFindManyArgs = {
       where, // Aplicar filtros
       orderBy: {
-        createdAt: "desc",
+        createdAt: "asc",
       },
       include: {
         category: true,

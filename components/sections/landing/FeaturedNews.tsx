@@ -20,7 +20,7 @@ export default function FeaturedNews({ newsItem }: FeaturedNewsProps) {
   }
 
   return (
-    <section className="min-h-[80vh] md:max-w-6xl mb-20">
+    <section className="min-h-[55vh] md:max-w-6xl">
       <div className="container mx-auto">
         <div className="flex justify-center items-center rounded-2xl">
           <TextDivider
@@ -35,7 +35,7 @@ export default function FeaturedNews({ newsItem }: FeaturedNewsProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-12"
+          className="mt-4"
         >
           <Link href={`/new/${newsItem.id}`}>
             <div
@@ -44,7 +44,7 @@ export default function FeaturedNews({ newsItem }: FeaturedNewsProps) {
               onMouseLeave={() => setIsHovered(false)}
             >
               {/* Contenedor de imagen/video */}
-              <div className="relative h-[60vh] w-full">
+              <div className="relative h-[55vh] w-full">
                 {newsItem.urlVideos.length > 0 ? (
                   <>
                     <Image

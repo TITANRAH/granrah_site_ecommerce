@@ -11,21 +11,21 @@ interface NewCardItemProps {
 }
 function NewCardItem({news}: NewCardItemProps) {
   return (
-    <Card className="group relative overflow-hidden border-red-500/20 bg-gradient-to-r from-red-900/30 via-black/80 to-red-800/20 hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-300">
+    <Card className="group h-[500px]  relative overflow-hidden border-red-500/20 bg-gradient-to-r from-red-900/30 via-black/80 to-red-800/20 hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-300">
     <div className="absolute top-5 md:top-4 right-4">
       <span className="px-3  py-1 text-sm font-medium bg-red-500/20 text-red-400 rounded-full border border-red-400/30">
         {news.category.name}
       </span>
     </div>
-    <div className="flex flex-col md:flex-row">
-      <div className="w-full md:w-1/3 relative">
-        <div className="relative overflow-hidden pt-10">
+    <div className="flex flex-col ">
+      <div className="w-full relative">
+        <div className="relative overflow-hidden pt-10 w-full">
           <Image
             src={news.srcImages[0] || ''}
             alt={news.title}
             width={1000}
             height={1000}
-            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+            className=" object-contain transform group-hover:scale-110 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
