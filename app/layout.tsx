@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./theme-provider";
-import Navbar from "@/components/shared/common/Navbar";
-import Footer from "@/components/shared/common/Footer";
+import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
 import { Toaster } from "sonner";
 
 // const inter = Inter({ subsets: ["latin"] });

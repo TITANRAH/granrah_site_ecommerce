@@ -1,31 +1,23 @@
-"use client";
-
-import { AnimatedSection } from "@/components/sections/wrapper-animation/AnimatedSection";
+import { AnimatedSection } from "@/components/common/AnimatedSection";
 import { DraggableCards } from "@/components/sections/landing/DraggableCards";
 import { MediaPlayer } from "@/components/sections/landing/MediaPlayer";
-import { ModernAccordion, AccordionItem } from "@/components/ui/Accordion";
-import Hero from "@/components/shared/landing/Hero";
+import { ModernAccordion } from "@/components/ui/Accordion";
+import Hero from "@/components/sections/landing/Hero";
 
-import TextDivider from "@/components/shared/common/TextDivider";
+import TextDivider from "@/components/common/TextDivider";
 import { User2, Music, Headphones, Mail, Newspaper } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
+
 import { aboutItems } from "@/constants/landing/about-me/about-me-item.constant";
-import { images } from "@/constants/landing/about-me/images-to-about-me";
 import { ContactForm } from "@/components/sections/landing/ContactForm";
 import News from "@/components/sections/landing/News";
 import FeaturedNews from "@/components/sections/landing/FeaturedNews";
-import { featuredNewsData } from "@/constants/landing/news/featured-news.data";
+import { getNews } from "@/actions/landing/get.news.action";
 
-export default function Home() {
-  const [currentImage, setCurrentImage] = useState(images.default);
-  const handleAccordionChange = (item: AccordionItem | null) => {
-    setCurrentImage(
-      item?.imageKey
-        ? images[item.imageKey as keyof typeof images]
-        : images.default
-    );
-  };
+export default async function Home() {
+  const news = await getNews({ page: 1, limit: 4 });
+
+  const featuredNews = news.data.find((news) => news.isFeatured);
+  const newsWithoutFeatured = news.data.filter((news) => news != featuredNews);
 
   return (
     <main>
@@ -70,20 +62,10 @@ export default function Home() {
         <AnimatedSection direction="right">
           <div className="flex md:flex-row flex-col gap-10 ">
             <div className="flex justify-center items-center ">
-              <div className="relative w-[500px] h-[500px] overflow-hidden rounded-2xl">
-                <Image
-                  src={currentImage}
-                  alt="about"
-                  fill
-                  className="object-contain md:scale-150 "
-                />
-              </div>
+              <div className="relative w-[500px] h-[500px] overflow-hidden rounded-2xl"></div>
             </div>
             <div className="w-[350px] md:max-w-3xl mx-auto md:w-full">
-              <ModernAccordion
-                items={aboutItems}
-                onItemSelect={handleAccordionChange}
-              />
+              <ModernAccordion items={aboutItems} />
             </div>
           </div>
         </AnimatedSection>
@@ -95,15 +77,22 @@ export default function Home() {
         icon={<Newspaper className="text-black" size={60} strokeWidth={2} />}
       />
       <section className="max-w-[1200px] px-20 mt-5 flex justify-center items-center m-auto">
-          <div className="px-20">
-            <FeaturedNews {...featuredNewsData} />
-            <div>
+        <div className="px-20">
+          {featuredNews && <FeaturedNews newsItem={featuredNews!} />}
 
-        <AnimatedSection direction="right">
-            <News />
-        </AnimatedSection>
+          {newsWithoutFeatured.length === 0 && (
+            <main className="flex justify-center items-center h-screen">
+              <p>Error cargando noticias.</p>
+            </main>
+          )}
+          {newsWithoutFeatured.length > 0 && (
+            <div>
+              <AnimatedSection direction="right">
+                <News news={newsWithoutFeatured} />
+              </AnimatedSection>
             </div>
-          </div>
+          )}
+        </div>
       </section>
 
       <div id="contact" className=" w-full h-20"></div>

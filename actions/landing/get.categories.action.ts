@@ -1,11 +1,16 @@
 "use server";
 
-import { NewCategoryInterface } from "@/interfaces/admin/news/new-category.interface";
 import { ApiResponse } from "@/interfaces/api-response/api-response.interface";
 import prisma from "@/lib/prismadb";
 
+export interface CategoryResponse {
+  id: string;
+  name: string;
+  description: string | null;
+}
+
 export async function getCategories(): Promise<
-  ApiResponse<NewCategoryInterface[]>
+  ApiResponse<CategoryResponse[]>
 > {
   try {
     const categories = await prisma.newCategory.findMany({
@@ -16,14 +21,17 @@ export async function getCategories(): Promise<
 
     return {
       success: true,
-      data: categories || [],
+      data: categories,
     };
   } catch (error) {
     console.error("Error al obtener categorías:", error);
     return {
       success: false,
       data: [],
-      error: "Error al obtener las categorías",
+      error:
+        error instanceof Error
+          ? error.message
+          : "Error al obtener las categorías",
     };
   }
 }

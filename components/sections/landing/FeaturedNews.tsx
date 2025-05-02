@@ -5,28 +5,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Newspaper, Play } from "lucide-react";
-import TextDivider from "@/components/shared/common/TextDivider";
+import TextDivider from "@/components/common/TextDivider";
+import { NewResponse } from "@/interfaces/admin/news/new-response.interface";
 
 interface FeaturedNewsProps {
-  id: string;
-  title: string;
-  description: string;
-  image?: string;
-  videoUrl?: string;
-  date: string;
-  category: string;
+  newsItem: NewResponse | null;
 }
 
-export default function FeaturedNews({
-  id,
-  title,
-  description,
-  image,
-  videoUrl,
-  date,
-  category,
-}: FeaturedNewsProps) {
+export default function FeaturedNews({ newsItem }: FeaturedNewsProps) {
   const [isHovered, setIsHovered] = useState(false);
+
+  if (!newsItem) {
+    return null;
+  }
 
   return (
     <section className="min-h-[80vh] md:max-w-6xl mb-20">
@@ -46,7 +37,7 @@ export default function FeaturedNews({
           animate={{ opacity: 1, y: 0 }}
           className="mt-12"
         >
-          <Link href={`/new/${id}`}>
+          <Link href={`/new/${newsItem.id}`}>
             <div
               className="group relative overflow-hidden rounded-2xl cursor-pointer"
               onMouseEnter={() => setIsHovered(true)}
@@ -54,11 +45,11 @@ export default function FeaturedNews({
             >
               {/* Contenedor de imagen/video */}
               <div className="relative h-[60vh] w-full">
-                {videoUrl ? (
+                {newsItem.urlVideos.length > 0 ? (
                   <>
                     <Image
-                      src={image || ""}
-                      alt={title}
+                      src={newsItem.srcImages[0] || ""}
+                      alt={newsItem.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -70,8 +61,8 @@ export default function FeaturedNews({
                 ) : (
                   <>
                     <Image
-                      src={image || ""}
-                      alt={title}
+                      src={newsItem.srcImages[0] || ""}
+                      alt={newsItem.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
@@ -84,17 +75,17 @@ export default function FeaturedNews({
               <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
                 <div className="flex items-center gap-4 mb-4">
                   <span className="px-3 py-1 text-sm font-medium bg-red-500/20 text-red-400 rounded-full border border-red-400/30">
-                    {category}
+                    {newsItem.category.name}
                   </span>
                   <span className="text-gray-300">
-                    {new Date(date).toLocaleDateString()}
+                    {new Date(newsItem.createdAt || "").toLocaleDateString()}
                   </span>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-4 group-hover:text-red-500 transition-colors duration-300">
-                  {title}
+                  {newsItem.title}
                 </h2>
                 <p className="text-lg text-gray-300 line-clamp-3">
-                  {description}
+                  {newsItem.noticeTextP1}
                 </p>
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}

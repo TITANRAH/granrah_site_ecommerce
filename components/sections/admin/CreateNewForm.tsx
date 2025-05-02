@@ -30,7 +30,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { NewCategoryInterface } from "@/interfaces/admin/news/new-category.interface";
-import { ApiResponse } from "@/interfaces/responses/api.response";
+import { ApiResponse } from "@/interfaces/api-response/api-response.interface";
 
 interface CreateNewsFormProps {
   categories: ApiResponse<NewCategoryInterface[]>;
@@ -56,6 +56,8 @@ const CreateNewsForm = ({ categories }: CreateNewsFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof newsSchema>) {
+    console.log("values", values);
+
     const response = await createNews(values);
 
     if (!response.success) {
@@ -69,7 +71,7 @@ const CreateNewsForm = ({ categories }: CreateNewsFormProps) => {
       toast({
         title: "!UP¡",
         description: "!Noticia creada con éxito¡",
-        className: "bg-green-500 text-white",
+        className: "bg-green-400 text-white",
       });
       form.reset();
     }
@@ -82,6 +84,7 @@ const CreateNewsForm = ({ categories }: CreateNewsFormProps) => {
       "secure_url" in result.info
     ) {
       const url = result.info.secure_url;
+      console.log("url", url);
       const currentImages = form.getValues("srcImages") || [];
       form.setValue("srcImages", [...currentImages, url]);
       toast({
@@ -161,7 +164,7 @@ const CreateNewsForm = ({ categories }: CreateNewsFormProps) => {
               <FormItem className="flex flex-col">
                 <FormLabel>Subir Imágenes</FormLabel>
                 <CldUploadButton
-                  uploadPreset="ecobarrio"
+                  uploadPreset="granrah_site_ecommerce"
                   onSuccess={handleCloudinaryUpload}
                   className="bg-green-400 hover:bg-green-600 py-2 px-3 rounded-xl text-white font-bold"
                 />

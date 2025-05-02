@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import TextDivider from "@/components/shared/common/TextDivider";
+import TextDivider from "@/components/common/TextDivider";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -243,12 +243,10 @@ export default function Gallery() {
     }
   }, [currentTab, currentPage, totalPagesImages, totalPagesVideos, router]);
 
-  
   return (
     <section className="min-h-screen bg-background">
-        <TextDivider text="Galería" />
+      <TextDivider text="Galería" />
       <div className="container mx-auto px-4 my-20">
-
         <Tabs
           defaultValue="images"
           value={currentTab}
@@ -290,8 +288,8 @@ export default function Gallery() {
                 >
                   <div className="relative h-64 w-full rounded-xl overflow-hidden">
                     <Image
-                      src={image.src || '/ruta/a/una/imagen-default.jpg'}
-                      alt={image.src|| 'Imagen'}
+                      src={image.src || "/ruta/a/una/imagen-default.jpg"}
+                      alt={image.src || "Imagen"}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />
@@ -368,8 +366,8 @@ export default function Gallery() {
                 >
                   <div className="relative h-64 w-full rounded-xl overflow-hidden">
                     <Image
-                       src={video.thumbnail || '/ruta/a/una/imagen-default.jpg'}
-                       alt={video.title || 'Imagen'}
+                      src={video.thumbnail || "/ruta/a/una/imagen-default.jpg"}
+                      alt={video.title || "Imagen"}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />

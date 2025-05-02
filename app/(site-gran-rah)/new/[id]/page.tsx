@@ -6,8 +6,8 @@ import { ArrowLeft } from "lucide-react";
 import { newsDataJson } from "@/constants/landing/news/news.data-json.json";
 import Link from "next/link";
 import { use } from "react";
-import TextDivider from "@/components/shared/common/TextDivider";
-import ShareButtons from "@/components/shared/common/ShareButtons";
+import TextDivider from "@/components/common/TextDivider";
+import ShareButtons from "@/components/common/ShareButtons";
 
 export default function New({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -15,7 +15,7 @@ export default function New({ params }: { params: Promise<{ id: string }> }) {
   const otherNews = newsDataJson.filter((news) => news.id !== id);
 
   if (!currentNew) {
-    return <div>Noticia no encontrada</div>;
+    return <div className="flex justify-center items-center h-[80vh] text-3xl">Noticia no encontrada</div>;
   }
 
   return (

@@ -13,19 +13,17 @@ export interface AccordionItem {
 
 interface ModernAccordionProps {
   items: AccordionItem[];
-  onItemSelect?: (item: AccordionItem | null) => void;
 }
 
 export const ModernAccordion = ({
   items,
-  onItemSelect,
+  
 }: ModernAccordionProps) => {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const handleItemClick = (index: number) => {
     const newIndex = expandedIndex === index ? null : index;
     setExpandedIndex(newIndex);
-    onItemSelect?.(newIndex !== null ? items[newIndex] : null);
   };
 
   return (

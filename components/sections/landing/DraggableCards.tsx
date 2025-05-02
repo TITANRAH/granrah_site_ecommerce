@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import DraggableCardItem from "../../sections-components/landing/dragable-card/DraggableCardItem";
+import DraggableCardItem from "./components/DraggableCardItem";
 import { cards } from "@/constants/landing/draggable-card/draggable-card-items";
 
 export const DraggableCards = () => {
