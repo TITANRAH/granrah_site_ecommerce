@@ -1,9 +1,5 @@
 "use client";
 import { getNews } from "@/actions/landing/get.news.action";
-import {
-  CategoryResponse,
-  getCategories,
-} from "@/actions/landing/get.categories.action";
 import { NewResponse } from "@/interfaces/admin/news/new-response.interface";
 import { PaginationMeta } from "@/interfaces/api-response/api-response.interface";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -19,8 +15,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import NewsCardSkeleton from "@/components/sections/landing/components/skeletons/NewCardSkeleton";
-
-
+import { NewCategoryInterface } from "@/interfaces/admin/news/new-category.interface";
+import { getCategories } from "@/actions/admin/get.categories.action";
 
 function AllNewsPage() {
   const router = useRouter();
@@ -32,7 +28,7 @@ function AllNewsPage() {
 
   const [news, setNews] = useState<NewResponse[]>([]);
   const [meta, setMeta] = useState<PaginationMeta | undefined>();
-  const [categories, setCategories] = useState<CategoryResponse[]>([]);
+  const [categories, setCategories] = useState<NewCategoryInterface[]>([]);
   const [loading, setLoading] = useState(true);
 
   // Obtener categorías al cargar la página
@@ -130,7 +126,9 @@ function AllNewsPage() {
               <SelectValue placeholder="Selecciona una categoría" />
             </SelectTrigger>
             <SelectContent className=" bg-black/70">
-              <SelectItem value="all" className="text-white">Todas las categorías</SelectItem>
+              <SelectItem value="all" className="text-white">
+                Todas las categorías
+              </SelectItem>
               {categories.map((cat) => (
                 <SelectItem key={cat.id} value={cat.id} className="text-white">
                   {cat.name}

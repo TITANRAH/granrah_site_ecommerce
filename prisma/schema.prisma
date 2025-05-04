@@ -40,3 +40,47 @@ model New {
 
   @@index([categoryId])
 }
+
+model User {
+  id            String         @id @default(cuid())
+  name          String?
+  email         String?        @unique
+  emailVerified DateTime?
+  image         String?
+  hashPassword  String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  direcciones   Direccion[]
+  discountCodes DiscountCode[]
+}
+
+model DiscountCode {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  userId    String
+  score     Int
+  isUsed    Boolean  @default(false)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Direccion {
+  id           String   @id @default(cuid())
+  calle        String
+  numero       String
+  comuna       String
+  ciudad       String
+  region       String
+  codigoPostal String
+  isDefault    Boolean  @default(false)
+  tipo         String // "envio" | "facturacion"
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([userId])
+}

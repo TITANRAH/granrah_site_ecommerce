@@ -3,6 +3,7 @@ import { DraggableCards } from "@/components/sections/landing/DraggableCards";
 import { MediaPlayer } from "@/components/sections/landing/MediaPlayer";
 import { ModernAccordion } from "@/components/ui/Accordion";
 import Hero from "@/components/sections/landing/Hero";
+import { DinoGame } from "@/components/games/DinoGame";
 
 import TextDivider from "@/components/common/TextDivider";
 import {
@@ -12,6 +13,7 @@ import {
   Mail,
   Newspaper,
   ChevronLeft,
+  Gamepad2,
 } from "lucide-react";
 
 import { aboutItems } from "@/constants/landing/about-me/about-me-item.constant";
@@ -19,9 +21,12 @@ import { ContactForm } from "@/components/sections/landing/ContactForm";
 import FeaturedNews from "@/components/sections/landing/FeaturedNews";
 import { getNews } from "@/actions/landing/get.news.action";
 import Link from "next/link";
+import { auth } from "@/utils/auth";
 
 export default async function Home() {
   const news = await getNews({ page: 1, limit: 1 });
+
+  const session = await auth();
 
   const featuredNews = news.data[0];
 
@@ -111,6 +116,16 @@ export default async function Home() {
       />
       <section className="max-w-[1200px] my-5  flex justify-center items-center m-auto">
         <ContactForm />
+      </section>
+
+      <div id="game" className="w-full h-20"></div>
+      <TextDivider
+        text="¡JUEGA Y GANA!"
+        direction="right"
+        icon={<Gamepad2 className="text-black" size={60} strokeWidth={2} />}
+      />
+      <section className="max-w-[1200px] my-5 flex justify-center items-center m-auto">
+        <DinoGame session={session} />
       </section>
     </main>
   );
