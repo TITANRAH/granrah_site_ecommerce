@@ -21,7 +21,6 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { createNews } from "@/actions/admin/create.new.action";
 import { newsSchema } from "@/schemas/news.schema";
-import { NewItemInterface } from "@/interfaces/admin/news/new-item.interface";
 import {
   Select,
   SelectContent,
@@ -39,7 +38,7 @@ interface CreateNewsFormProps {
 const CreateNewsForm = ({ categories }: CreateNewsFormProps) => {
   const { toast } = useToast();
 
-  const form = useForm<NewItemInterface>({
+  const form = useForm<z.infer<typeof newsSchema>>({
     resolver: zodResolver(newsSchema),
     defaultValues: {
       title: "",
@@ -151,6 +150,7 @@ const CreateNewsForm = ({ categories }: CreateNewsFormProps) => {
                       <Textarea
                         placeholder={`Contenido del párrafo ${index + 1}`}
                         {...field}
+                        value={field.value ?? ""}
                       />
                     </FormControl>
                     <FormMessage />
@@ -233,7 +233,7 @@ const CreateNewsForm = ({ categories }: CreateNewsFormProps) => {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    {categories.data.map((category) => (
+                    {categories.data?.map((category) => (
                       <SelectItem key={category.id} value={category.id}>
                         {category.name}
                       </SelectItem>
@@ -245,7 +245,12 @@ const CreateNewsForm = ({ categories }: CreateNewsFormProps) => {
             )}
           />
 
-          <Button type="submit">Crear noticia</Button>
+          <Button
+            type="submit"
+            className="w-full p-2 cursor-pointer border hover:bg-sky-400 "
+          >
+            Crear Noticia
+          </Button>
         </form>
       </Form>
     </>

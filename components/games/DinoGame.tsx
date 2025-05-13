@@ -39,10 +39,9 @@ export const DinoGame = ({ session }: DinoGameProps) => {
   const dinoImg = useRef<HTMLImageElement | null>(null);
   const [imgLoaded, setImgLoaded] = useState(false);
 
-  // Cargar el icono del sitio
   useEffect(() => {
     dinoImg.current = new window.Image();
-    dinoImg.current.src = "/images/landing/logo.png"; // Ajusta la ruta si es necesario
+    dinoImg.current.src = "/images/landing/logo.png";
     dinoImg.current.width = 50;
     dinoImg.current.onload = () => setImgLoaded(true);
     dinoImg.current.onerror = () => setImgLoaded(false);
@@ -201,6 +200,7 @@ export const DinoGame = ({ session }: DinoGameProps) => {
     // Dibujar puntaje
     ctx.fillStyle = "#000";
     ctx.font = "20px Arial";
+    ctx.filter = "invert(1)";
     ctx.fillText(`Score: ${gameState.score}`, 20, 30);
 
     animationFrameId.current = requestAnimationFrame(updateGame);

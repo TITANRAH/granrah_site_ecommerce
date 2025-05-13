@@ -4,9 +4,9 @@ export interface NewItemInterface {
   srcImages: string[];
   urlVideos: string[];
   noticeTextP1: string;
-  noticeTextP2?: string;
-  noticeTextP3?: string;
-  noticeTextP4?: string;
+  noticeTextP2: string | null;
+  noticeTextP3: string | null;
+  noticeTextP4: string | null;
   isFeatured: boolean;
   categoryId: string;
   createdAt?: Date;

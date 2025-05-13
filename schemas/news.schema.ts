@@ -6,9 +6,9 @@ export const newsSchema = z.object({
   srcImages: z.array(z.string()),
   urlVideos: z.array(z.string()),
   noticeTextP1: z.string().min(1, "El primer párrafo es requerido"),
-  noticeTextP2: z.string().optional(),
-  noticeTextP3: z.string().optional(),
-  noticeTextP4: z.string().optional(),
+  noticeTextP2: z.string().nullable(),
+  noticeTextP3: z.string().nullable(),
+  noticeTextP4: z.string().nullable(),
   isFeatured: z.boolean(),
   categoryId: z.string().min(1, "La categoría es requerida"),
 });

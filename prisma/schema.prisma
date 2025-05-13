@@ -41,6 +41,19 @@ model New {
   @@index([categoryId])
 }
 
+model Disco {
+  id            String   @id @default(uuid())
+  title         String
+  imageUrl      String
+  featurings    String[]
+  descriptionP1 String // Párrafo requerido
+  descriptionP2 String?
+  descriptionP3 String?
+  descriptionP4 String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
 model User {
   id            String         @id @default(cuid())
   name          String?

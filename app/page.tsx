@@ -4,6 +4,7 @@ import { MediaPlayer } from "@/components/sections/landing/MediaPlayer";
 import { ModernAccordion } from "@/components/ui/Accordion";
 import Hero from "@/components/sections/landing/Hero";
 import { DinoGame } from "@/components/games/DinoGame";
+import Image from "next/image";
 
 import TextDivider from "@/components/common/TextDivider";
 import {
@@ -28,7 +29,7 @@ export default async function Home() {
 
   const session = await auth();
 
-  const featuredNews = news.data[0];
+  const featuredNews = news.data?.[0];
 
   return (
     <main>
@@ -73,7 +74,14 @@ export default async function Home() {
         <AnimatedSection direction="right">
           <div className="flex md:flex-row flex-col gap-10 ">
             <div className="flex justify-center items-center ">
-              <div className="relative w-[500px] h-[500px] overflow-hidden rounded-2xl"></div>
+              <div className="relative w-[500px] h-[500px] overflow-hidden rounded-2xl">
+                <Image
+                  src="/images/landing/foto-3.JPG"
+                  alt="Granrah"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
             <div className="w-[350px] md:max-w-3xl mx-auto md:w-full">
               <ModernAccordion items={aboutItems} />
